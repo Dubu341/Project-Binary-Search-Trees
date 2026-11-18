@@ -1,18 +1,20 @@
 import Tree from "./bts.js";
 
-function arrayPrime() {
-  let arr = [];
-  let length = Math.floor(Math.random() * 20) + 1;
-  for (let i = 0; i < length; i++) {
-    arr.push(Math.floor(Math.random() * 100));
+function randomArray(size = 20) {
+  const arr = Array.from({ length: size }, (_, i) => i + 1);
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
   }
   return arr;
 }
 
-let randomArray = arrayPrime();
+const random = randomArray();
 
-console.log("Random array:", randomArray);
+console.log("Random array:", random);
 
-const tree = new Tree(randomArray);
+const tree = new Tree(random);
 
-console.log(tree.prettyPrint());
+tree.prettyPrint();
+
+console.log(tree.includes(20));
