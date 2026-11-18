@@ -53,6 +53,32 @@ class Tree {
     return this.root;
   }
 
+  getSuccessor(curr) {
+    curr = curr.right;
+    while (curr !== null && curr.left !== null) curr = curr.left;
+    return curr;
+  }
+  deleteItem(value) {
+    this.root = this.#deleteNode(value, this.root);
+  }
+  #deleteNode(value, root) {
+    if (root === null) return null;
+
+    if (value < root.data) {
+      root.left = this.#deleteNode(value, root.left);
+    } else if (value > root.data) {
+      root.right = this.#deleteNode(value, root.right);
+    } else {
+      if (root.left === null) return root.right;
+      if (root.right === null) return root.left;
+
+      const successor = this.getSuccessor(root);
+      root.data = successor.data;
+      root.right = this.#deleteNode(successor.data, root.right);
+    }
+    return root;
+  }
+
   prettyPrint(node = this.root, prefix = "", isLeft = true) {
     if (node === null || node === undefined) {
       return;
