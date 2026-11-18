@@ -26,6 +26,33 @@ class Tree {
     return false;
   }
 
+  insert(value) {
+    if (!this.root) return this.root;
+
+    const newNode = new Node(value);
+
+    let current = this.root;
+
+    while (current) {
+      if (current.data === value) {
+        return this.root;
+      } else if (current.data > value && current.left !== null) {
+        current = current.left;
+      } else if (current.data < value && current.right !== null) {
+        current = current.right;
+      } else {
+        break;
+      }
+    }
+
+    if (current.data > value) {
+      current.left = newNode;
+    } else {
+      current.right = newNode;
+    }
+    return this.root;
+  }
+
   prettyPrint(node = this.root, prefix = "", isLeft = true) {
     if (node === null || node === undefined) {
       return;
