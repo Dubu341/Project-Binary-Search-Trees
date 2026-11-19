@@ -1,4 +1,4 @@
-import Tree from "./bts.js";
+import Tree from "./bst.js";
 
 function randomNumbers(size = 10) {
   return Array.from({ length: size }, () => Math.floor(Math.random() * 100));
