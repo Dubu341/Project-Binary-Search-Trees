@@ -1,25 +1,14 @@
 import Tree from "./bts.js";
 
-function randomArray(size = 13) {
-  const arr = Array.from({ length: size }, (_, i) => i + 1);
-  for (let i = arr.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [arr[i], arr[j]] = [arr[j], arr[i]];
-  }
-  return arr;
+function randomNumbers(size = 10) {
+  return Array.from({ length: size }, () => Math.floor(Math.random() * 100));
 }
 
-const random = randomArray();
+const random = randomNumbers();
 
 console.log("Random array:", random);
 
 const tree = new Tree(random);
-
-tree.insert(90);
-tree.insert(64);
-tree.insert(58);
-tree.insert(77);
-tree.insert(18);
 
 // console.log(tree.includes(5));
 
@@ -50,13 +39,42 @@ tree.insert(18);
 
 // console.log(tree.getDepth(8));
 
-console.log("is balanced");
-console.log(tree.isBalanced());
+console.log("Is balanced: " + tree.isBalanced());
 tree.prettyPrint();
 
-tree.rebalance();
+console.log("---------level---------");
+tree.levelOrderForEach((value) => console.log(value));
+
+console.log("---------pre---------");
+tree.preOrderForEach((value) => console.log(value));
+
+console.log("---------post---------");
+tree.postOrderForEach((value) => console.log(value));
+
+console.log("---------order---------");
+tree.inOrderForEach((value) => console.log(value));
 console.log("------------------");
 
-console.log("is balanced");
-console.log(tree.isBalanced());
+tree.insert(101);
+tree.insert(102);
+tree.insert(111);
+tree.insert(1701);
+console.log("is balanced: " + tree.isBalanced());
 tree.prettyPrint();
+console.log("------------------");
+
+tree.rebalance();
+console.log("is balanced: " + tree.isBalanced());
+tree.prettyPrint();
+console.log("---------level---------");
+tree.levelOrderForEach((value) => console.log(value));
+
+console.log("---------pre---------");
+tree.preOrderForEach((value) => console.log(value));
+
+console.log("---------post---------");
+tree.postOrderForEach((value) => console.log(value));
+
+console.log("---------order---------");
+tree.inOrderForEach((value) => console.log(value));
+console.log("------------------");
