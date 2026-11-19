@@ -102,7 +102,7 @@ class Tree {
     }
     this.#preOrder(callback, this.root);
   }
-  #preOrder(callback, root = this.root) {
+  #preOrder(callback, root) {
     if (root === null) return;
 
     callback(root.data);
@@ -116,7 +116,7 @@ class Tree {
     }
     this.#inOrder(callback, this.root);
   }
-  #inOrder(callback, root = this.root) {
+  #inOrder(callback, root) {
     if (root === null) return;
 
     this.#inOrder(callback, root.left);
@@ -130,7 +130,7 @@ class Tree {
     }
     this.#postOrder(callback, this.root);
   }
-  #postOrder(callback, root = this.root) {
+  #postOrder(callback, root) {
     if (root === null) return;
 
     this.#postOrder(callback, root.left);
@@ -182,7 +182,11 @@ class Tree {
     return this.#isBalancedHelper(this.root);
   }
 
-
+  rebalance() {
+    let values = [];
+    this.inOrderForEach((value) => values.push(value));
+    this.root = this.#buildTree(values, 0, values.length - 1);
+  }
 
   prettyPrint(node = this.root, prefix = "", isLeft = true) {
     if (node === null || node === undefined) {
