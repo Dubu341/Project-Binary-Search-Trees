@@ -79,6 +79,23 @@ class Tree {
     return root;
   }
 
+  levelOrderForEach(callback) {
+    if (typeof callback !== "function") {
+      throw new Error("Callback must be a function");
+    }
+    if (this.root == null) return;
+
+    let queue = [this.root];
+
+    while (queue.length > 0) {
+      let current = queue.shift();
+      callback(current);
+
+      if (current.left !== null) queue.push(current.left);
+      if (current.right !== null) queue.push(current.right);
+    }
+  }
+
   prettyPrint(node = this.root, prefix = "", isLeft = true) {
     if (node === null || node === undefined) {
       return;
