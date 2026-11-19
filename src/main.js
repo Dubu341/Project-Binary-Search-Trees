@@ -45,3 +45,6 @@ tree.inOrderForEach((node) => console.log(node));
 console.log("------------------");
 
 tree.postOrderForEach((node) => console.log(node));
+console.log("------------------");
+
+console.log(tree.getHeight(4));

@@ -138,6 +138,22 @@ class Tree {
     callback(root.data);
   }
 
+  getHeight(value) {
+    let current = this.root;
+    while (current) {
+      if (value === current.data) return this.#height(current);
+      current = value < current.data ? current.left : current.right;
+    }
+    return;
+  }
+  #height(node) {
+    if (node === null) return -1;
+    const leftHeight = this.#height(node.left);
+    const rightHeight = this.#height(node.right);
+
+    return Math.max(leftHeight, rightHeight) + 1;
+  }
+
   prettyPrint(node = this.root, prefix = "", isLeft = true) {
     if (node === null || node === undefined) {
       return;
