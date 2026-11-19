@@ -154,6 +154,17 @@ class Tree {
     return Math.max(leftHeight, rightHeight) + 1;
   }
 
+  getDepth(value) {
+    let current = this.root;
+    let depth = 0;
+    while (current) {
+      if (value === current.data) return depth;
+      depth++;
+      current = value < current.data ? current.left : current.right;
+    }
+    return;
+  }
+
   prettyPrint(node = this.root, prefix = "", isLeft = true) {
     if (node === null || node === undefined) {
       return;

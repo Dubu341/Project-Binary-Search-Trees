@@ -48,3 +48,6 @@ tree.postOrderForEach((node) => console.log(node));
 console.log("------------------");
 
 console.log(tree.getHeight(4));
+console.log("------------------");
+
+console.log(tree.getDepth(8));
