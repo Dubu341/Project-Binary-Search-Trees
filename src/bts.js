@@ -165,6 +165,25 @@ class Tree {
     return;
   }
 
+  #isBalancedHelper(node) {
+    if (node === null) return true;
+
+    const left = this.#height(node.left);
+    const right = this.#height(node.right);
+
+    return (
+      Math.abs(left - right) <= 1 &&
+      this.#isBalancedHelper(node.left) &&
+      this.#isBalancedHelper(node.right)
+    );
+  }
+
+  isBalanced() {
+    return this.#isBalancedHelper(this.root);
+  }
+
+
+
   prettyPrint(node = this.root, prefix = "", isLeft = true) {
     if (node === null || node === undefined) {
       return;

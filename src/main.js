@@ -23,7 +23,7 @@ tree.insert(8);
 
 tree.prettyPrint();
 
-console.log(tree.includes(5));
+// console.log(tree.includes(5));
 
 // tree.deleteItem(1);
 // tree.deleteItem(2);
@@ -36,18 +36,20 @@ console.log(tree.includes(5));
 // tree.deleteItem(9);
 
 // tree.prettyPrint();
-tree.levelOrderForEach((node) => console.log(node));
-console.log("------------------");
-tree.preOrderForEach((node) => console.log(node));
-console.log("------------------");
+// tree.levelOrderForEach((node) => console.log(node));
+// console.log("------------------");
+// tree.preOrderForEach((node) => console.log(node));
+// console.log("------------------");
 
-tree.inOrderForEach((node) => console.log(node));
-console.log("------------------");
+// tree.inOrderForEach((node) => console.log(node));
+// console.log("------------------");
 
-tree.postOrderForEach((node) => console.log(node));
-console.log("------------------");
+// tree.postOrderForEach((node) => console.log(node));
+// console.log("------------------");
 
-console.log(tree.getHeight(4));
-console.log("------------------");
+// console.log(tree.getHeight(4));
+// console.log("------------------");
 
-console.log(tree.getDepth(8));
+// console.log(tree.getDepth(8));
+
+console.log(tree.isBalanced());
