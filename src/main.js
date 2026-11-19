@@ -5,6 +5,7 @@ function randomNumbers(size = 10) {
 }
 
 const random = randomNumbers();
+console.log("hello");
 
 console.log("Random array:", random);
 
@@ -33,7 +34,6 @@ const tree = new Tree(random);
 
 // tree.postOrderForEach((value) => console.log(value));
 // console.log("------------------");
-
 // console.log(tree.getHeight(4));
 // console.log("------------------");
 
