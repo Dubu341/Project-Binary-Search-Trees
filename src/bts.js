@@ -89,11 +89,53 @@ class Tree {
 
     while (queue.length > 0) {
       let current = queue.shift();
-      callback(current);
+      callback(current.data);
 
       if (current.left !== null) queue.push(current.left);
       if (current.right !== null) queue.push(current.right);
     }
+  }
+
+  preOrderForEach(callback) {
+    if (typeof callback !== "function") {
+      throw new Error("Callback must be a function");
+    }
+    this.#preOrder(callback, this.root);
+  }
+  #preOrder(callback, root = this.root) {
+    if (root === null) return;
+
+    callback(root.data);
+    this.#preOrder(callback, root.left);
+    this.#preOrder(callback, root.right);
+  }
+
+  inOrderForEach(callback) {
+    if (typeof callback !== "function") {
+      throw new Error("Callback must be a function");
+    }
+    this.#inOrder(callback, this.root);
+  }
+  #inOrder(callback, root = this.root) {
+    if (root === null) return;
+
+    this.#inOrder(callback, root.left);
+    callback(root.data);
+    this.#inOrder(callback, root.right);
+  }
+
+  postOrderForEach(callback) {
+    if (typeof callback !== "function") {
+      throw new Error("Callback must be a function");
+    }
+    this.#postOrder(callback, this.root);
+  }
+  #postOrder(callback, root = this.root) {
+    if (root === null) return;
+
+    this.#postOrder(callback, root.left);
+    this.#postOrder(callback, root.right);
+    callback(root.data);
   }
 
   prettyPrint(node = this.root, prefix = "", isLeft = true) {

@@ -1,6 +1,6 @@
 import Tree from "./bts.js";
 
-function randomArray(size = 4) {
+function randomArray(size = 5) {
   const arr = Array.from({ length: size }, (_, i) => i + 1);
   for (let i = arr.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -36,4 +36,12 @@ console.log(tree.includes(5));
 // tree.deleteItem(9);
 
 // tree.prettyPrint();
-tree.levelOrderForEach((node) => console.log(node.data));
+tree.levelOrderForEach((node) => console.log(node));
+console.log("------------------");
+tree.preOrderForEach((node) => console.log(node));
+console.log("------------------");
+
+tree.inOrderForEach((node) => console.log(node));
+console.log("------------------");
+
+tree.postOrderForEach((node) => console.log(node));
